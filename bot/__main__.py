@@ -46,29 +46,32 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>Commit Date:</b> {last_commit}\n\n'\
-            f'<b>Bot Uptime:</b> {currentTime}\n'\
-            f'<b>OS Uptime:</b> {osUptime}\n\n'\
-            f'<b>Total Disk Space:</b> {total}\n'\
-            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
-            f'<b>Upload:</b> {sent}\n'\
-            f'<b>Download:</b> {recv}\n\n'\
-            f'<b>CPU:</b> {cpuUsage}%\n'\
-            f'<b>RAM:</b> {mem_p}%\n'\
-            f'<b>DISK:</b> {disk}%\n\n'\
-            f'<b>Physical Cores:</b> {p_core}\n'\
-            f'<b>Total Cores:</b> {t_core}\n\n'\
-            f'<b>SWAP:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
-            f'<b>Memory Total:</b> {mem_t}\n'\
-            f'<b>Memory Free:</b> {mem_a}\n'\
-            f'<b>Memory Used:</b> {mem_u}\n'
+    stats = f'<b>•• ━━ Red Club X Mirror Bot ━━ ••</b>\n\n'\
+            f'<b>⏰Bot Uptime:</b> {currentTime}\n'\
+            f'<b>☬OS Uptime:</b> {osUptime}\n\n'\
+            f'<b>•• DISK INFO ••</b> \n\n'\
+            f'<b>📁Total Disk Space:</b> {total}\n'\
+            f'<b>☠Used:</b> {used} | <b>✨Free:</b> {free}\n\n'\
+            f'<b>•• DATA USAGE ••</b> \n'\
+            f'<b>📤Upload:</b> {sent}\n'\
+            f'<b>📥Download:</b> {recv}\n\n'\
+            f'<b>•• SERVER STATS ••</b> \n'\
+            f'<b>🖥️CPU:</b> {cpuUsage}%\n'\
+            f'<b>📦RAM:</b> {mem_p}%\n'\
+            f'<b>📀DISK:</b> {disk}%\n\n'\
+            f'<b>➤Physical Cores:</b> {p_core}\n'\
+            f'<b>☞Total Cores:</b> {t_core}\n\n'\
+            f'<b>✨SWAP:</b> {swap_t} | <b>🤗Used:</b> {swap_p}%\n'\
+            f'<b>💿Memory Total:</b> {mem_t}\n'\
+            f'<b>📀Memory Free:</b> {mem_a}\n'\
+            f'<b>💿Memory Used:</b> {mem_u}\n'
     sendMessage(stats, context.bot, update.message)
 
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("Repo", "https://www.github.com/anasty17/mirror-leech-telegram-bot")
-    buttons.buildbutton("Report Group", "https://t.me/+PRRzqHd31XY3ZWZk")
+    buttons.buildbutton("🤴 𝐎𝐰𝐧𝐞𝐫 🤴", "https://t.me/")
+    buttons.buildbutton("☠ 𝐌𝐢𝐫𝐫𝐨𝐫 𝐆𝐫𝐨𝐮𝐩 ☠", "https://t.me/KM_MIRROR_STORES")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
