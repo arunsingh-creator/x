@@ -227,12 +227,6 @@ try:
 except:
     STATUS_LIMIT = None
 try:
-    UPTOBOX_TOKEN = getConfig('UPTOBOX_TOKEN')
-    if len(UPTOBOX_TOKEN) == 0:
-        raise KeyError
-except:
-    UPTOBOX_TOKEN = None
-try:
     INDEX_URL = getConfig('INDEX_URL').rstrip("/")
     if len(INDEX_URL) == 0:
         raise KeyError
@@ -253,12 +247,6 @@ try:
     SEARCH_LIMIT = int(SEARCH_LIMIT)
 except:
     SEARCH_LIMIT = 0
-try:
-    RSS_COMMAND = getConfig('RSS_COMMAND')
-    if len(RSS_COMMAND) == 0:
-        raise KeyError
-except:
-    RSS_COMMAND = None
 try:
     CMD_INDEX = getConfig('CMD_INDEX')
     if len(CMD_INDEX) == 0:
@@ -301,50 +289,12 @@ try:
 except:
     ZIP_UNZIP_LIMIT = None
 try:
-    RSS_CHAT_ID = getConfig('RSS_CHAT_ID')
-    if len(RSS_CHAT_ID) == 0:
-        raise KeyError
-    RSS_CHAT_ID = int(RSS_CHAT_ID)
-except:
-    RSS_CHAT_ID = None
-try:
-    RSS_DELAY = getConfig('RSS_DELAY')
-    if len(RSS_DELAY) == 0:
-        raise KeyError
-    RSS_DELAY = int(RSS_DELAY)
-except:
-    RSS_DELAY = 900
-try:
     TORRENT_TIMEOUT = getConfig('TORRENT_TIMEOUT')
     if len(TORRENT_TIMEOUT) == 0:
         raise KeyError
     TORRENT_TIMEOUT = int(TORRENT_TIMEOUT)
 except:
     TORRENT_TIMEOUT = None
-try:
-    BUTTON_FOUR_NAME = getConfig('BUTTON_FOUR_NAME')
-    BUTTON_FOUR_URL = getConfig('BUTTON_FOUR_URL')
-    if len(BUTTON_FOUR_NAME) == 0 or len(BUTTON_FOUR_URL) == 0:
-        raise KeyError
-except:
-    BUTTON_FOUR_NAME = None
-    BUTTON_FOUR_URL = None
-try:
-    BUTTON_FIVE_NAME = getConfig('BUTTON_FIVE_NAME')
-    BUTTON_FIVE_URL = getConfig('BUTTON_FIVE_URL')
-    if len(BUTTON_FIVE_NAME) == 0 or len(BUTTON_FIVE_URL) == 0:
-        raise KeyError
-except:
-    BUTTON_FIVE_NAME = None
-    BUTTON_FIVE_URL = None
-try:
-    BUTTON_SIX_NAME = getConfig('BUTTON_SIX_NAME')
-    BUTTON_SIX_URL = getConfig('BUTTON_SIX_URL')
-    if len(BUTTON_SIX_NAME) == 0 or len(BUTTON_SIX_URL) == 0:
-        raise KeyError
-except:
-    BUTTON_SIX_NAME = None
-    BUTTON_SIX_URL = None
 try:
     INCOMPLETE_TASK_NOTIFIER = getConfig('INCOMPLETE_TASK_NOTIFIER')
     INCOMPLETE_TASK_NOTIFIER = INCOMPLETE_TASK_NOTIFIER.lower() == 'true'
@@ -433,40 +383,6 @@ try:
 except:
     CRYPT = None
 try:
-    TOKEN_PICKLE_URL = getConfig('TOKEN_PICKLE_URL')
-    if len(TOKEN_PICKLE_URL) == 0:
-        raise KeyError
-    try:
-        res = rget(TOKEN_PICKLE_URL)
-        if res.status_code == 200:
-            with open('token.pickle', 'wb+') as f:
-                f.write(res.content)
-        else:
-            log_error(f"Failed to download token.pickle, link got HTTP response: {res.status_code}")
-    except Exception as e:
-        log_error(f"TOKEN_PICKLE_URL: {e}")
-except:
-    pass
-try:
-    ACCOUNTS_ZIP_URL = getConfig('ACCOUNTS_ZIP_URL')
-    if len(ACCOUNTS_ZIP_URL) == 0:
-        raise KeyError
-    try:
-        res = rget(ACCOUNTS_ZIP_URL)
-        if res.status_code == 200:
-            with open('accounts.zip', 'wb+') as f:
-                f.write(res.content)
-        else:
-            log_error(f"Failed to download accounts.zip, link got HTTP response: {res.status_code}")
-    except Exception as e:
-        log_error(f"ACCOUNTS_ZIP_URL: {e}")
-        raise KeyError
-    srun(["unzip", "-q", "-o", "accounts.zip"])
-    srun(["chmod", "-R", "777", "accounts"])
-    osremove("accounts.zip")
-except:
-    pass
-try:
     MULTI_SEARCH_URL = getConfig('MULTI_SEARCH_URL')
     if len(MULTI_SEARCH_URL) == 0:
         raise KeyError
@@ -479,21 +395,6 @@ try:
             log_error(f"Failed to download drive_folder, link got HTTP response: {res.status_code}")
     except Exception as e:
         log_error(f"MULTI_SEARCH_URL: {e}")
-except:
-    pass
-try:
-    YT_COOKIES_URL = getConfig('YT_COOKIES_URL')
-    if len(YT_COOKIES_URL) == 0:
-        raise KeyError
-    try:
-        res = rget(YT_COOKIES_URL)
-        if res.status_code == 200:
-            with open('cookies.txt', 'wb+') as f:
-                f.write(res.content)
-        else:
-            log_error(f"Failed to download cookies.txt, link got HTTP response: {res.status_code}")
-    except Exception as e:
-        log_error(f"YT_COOKIES_URL: {e}")
 except:
     pass
 
