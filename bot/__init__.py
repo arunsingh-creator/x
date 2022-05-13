@@ -106,7 +106,6 @@ status_reply_dict = {}
 download_dict = {}
 # key: rss_title
 # value: [rss_feed, last_link, last_title, filter]
-rss_dict = {}
 
 AUTHORIZED_CHATS = set()
 SUDO_USERS = set()
@@ -150,18 +149,6 @@ try:
 except:
     LOGGER.error("One or more env variables missing! Exiting now")
     exit(1)
-
-LOGGER.info("Generating BOT_STRING_SESSION")
-app = Client(name='pyrogram', api_id=int(TELEGRAM_API), api_hash=TELEGRAM_HASH, bot_token=BOT_TOKEN, parse_mode=enums.ParseMode.HTML, no_updates=True)
-
-try:
-    USER_STRING_SESSION = getConfig('USER_STRING_SESSION')
-    if len(USER_STRING_SESSION) == 0:
-        raise KeyError
-    rss_session = Client(name='rss_session', api_id=int(TELEGRAM_API), api_hash=TELEGRAM_HASH, session_string=USER_STRING_SESSION, parse_mode=enums.ParseMode.HTML)
-except:
-    USER_STRING_SESSION = None
-    rss_session = None
 
 def aria2c_init():
     try:
